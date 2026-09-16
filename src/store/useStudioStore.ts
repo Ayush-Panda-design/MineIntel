@@ -84,29 +84,166 @@ const initialPresentation: Presentation = {
   slides: [
     {
       id: 'slide-1',
-      title: 'Problem',
+      title: 'Basic Details (SIH Title)',
       assignedTo: 'u-1',
       status: 'done',
       isEditing: true,
       lockedBy: 'u-1', // Locked by Ayush
       lastEditedAt: new Date().toISOString(),
-      background: '#F1ECE3',
+      background: '#FFFFFF',
       elements: [
+        // 1. Top Center Blue Pill Badge
         {
-          id: 'el-1',
-          type: 'TEXT',
-          content: 'One number, buried in three different files.',
-          x: 100,
-          y: 150,
-          width: 800,
-          height: 100,
+          id: 'el-top-pill-bg',
+          type: 'SHAPE',
+          shapeType: 'rounded-rect',
+          fill: '#0072C6',
+          stroke: '#0072C6',
+          strokeWidth: 0,
+          cornerRadius: 10,
+          x: 350,
+          y: 30,
+          width: 580,
+          height: 54,
           rotation: 0,
-          zIndex: 1,
-          fontSize: 64,
+          zIndex: 1
+        },
+        {
+          id: 'el-top-pill-text',
+          type: 'TEXT',
+          content: 'SMART INDIA HACKATHON 2026',
+          x: 350,
+          y: 42,
+          width: 580,
+          height: 40,
+          rotation: 0,
+          zIndex: 2,
+          fontSize: 24,
           fontFamily: 'Space Grotesk',
           fontWeight: 'bold',
-          color: '#201B14',
+          color: '#FFFFFF',
+          textAlign: 'center'
+        },
+        // 2. Top Right SIH Header Logo
+        {
+          id: 'el-top-right-logo',
+          type: 'IMAGE',
+          url: '/sih-logo.svg',
+          x: 1010,
+          y: 20,
+          width: 230,
+          height: 60,
+          rotation: 0,
+          zIndex: 3
+        },
+        // 3. Left Column Fields
+        {
+          id: 'el-field-1',
+          type: 'TEXT',
+          content: 'Problem Statement ID – SIH1645',
+          x: 50,
+          y: 135,
+          width: 760,
+          height: 45,
+          rotation: 0,
+          zIndex: 2,
+          fontSize: 24,
+          fontFamily: 'Space Grotesk',
+          fontWeight: 'bold',
+          color: '#1C1917',
           textAlign: 'left'
+        },
+        {
+          id: 'el-field-2',
+          type: 'TEXT',
+          content: 'Problem Statement Title - An app and web based software for Productivity and safety management of coal mines.',
+          x: 50,
+          y: 205,
+          width: 760,
+          height: 95,
+          rotation: 0,
+          zIndex: 2,
+          fontSize: 22,
+          fontFamily: 'Space Grotesk',
+          fontWeight: 'bold',
+          color: '#1C1917',
+          textAlign: 'left'
+        },
+        {
+          id: 'el-field-3',
+          type: 'TEXT',
+          content: 'Theme - Smart Automation',
+          x: 50,
+          y: 330,
+          width: 760,
+          height: 45,
+          rotation: 0,
+          zIndex: 2,
+          fontSize: 22,
+          fontFamily: 'Space Grotesk',
+          fontWeight: 'bold',
+          color: '#1C1917',
+          textAlign: 'left'
+        },
+        {
+          id: 'el-field-4',
+          type: 'TEXT',
+          content: 'PS Category- Software',
+          x: 50,
+          y: 400,
+          width: 760,
+          height: 45,
+          rotation: 0,
+          zIndex: 2,
+          fontSize: 22,
+          fontFamily: 'Space Grotesk',
+          fontWeight: 'bold',
+          color: '#1C1917',
+          textAlign: 'left'
+        },
+        {
+          id: 'el-field-5',
+          type: 'TEXT',
+          content: 'Team ID- 289',
+          x: 50,
+          y: 470,
+          width: 760,
+          height: 45,
+          rotation: 0,
+          zIndex: 2,
+          fontSize: 22,
+          fontFamily: 'Space Grotesk',
+          fontWeight: 'bold',
+          color: '#1C1917',
+          textAlign: 'left'
+        },
+        {
+          id: 'el-field-6',
+          type: 'TEXT',
+          content: 'Team Name(Registered on Portal) - Arize',
+          x: 50,
+          y: 540,
+          width: 760,
+          height: 45,
+          rotation: 0,
+          zIndex: 2,
+          fontSize: 22,
+          fontFamily: 'Space Grotesk',
+          fontWeight: 'bold',
+          color: '#1C1917',
+          textAlign: 'left'
+        },
+        // 4. Right Side Full SIH Hexagon Shading Watermark & Brain Lightbulb Emblem Graphic
+        {
+          id: 'el-right-watermark-graphic',
+          type: 'IMAGE',
+          url: '/sih-watermark.svg',
+          x: 700,
+          y: 50,
+          width: 550,
+          height: 620,
+          rotation: 0,
+          zIndex: 0
         }
       ]
     },
@@ -118,7 +255,7 @@ const initialPresentation: Presentation = {
       isEditing: true,
       lockedBy: 'u-2', // Locked by Sarah (Simulating remote collaboration)
       lastEditedAt: new Date(Date.now() - 60000).toISOString(),
-      background: '#F1ECE3',
+      background: '#FFFFFF',
       elements: []
     },
     {
@@ -127,7 +264,7 @@ const initialPresentation: Presentation = {
       assignedTo: 'u-3',
       status: 'not-started',
       isEditing: false,
-      background: '#F1ECE3',
+      background: '#FFFFFF',
       elements: []
     }
   ]
@@ -484,7 +621,7 @@ export const useStudioStore = create<StudioState>((set, get) => ({
         presentation: {
           ...state.presentation,
           slides: [...state.presentation.slides, {
-            id: newSlideId, title: `New Slide`, assignedTo: state.currentUser.id, status: 'not-started', isEditing: true, lockedBy: state.currentUser.id, elements: [], background: '#F1ECE3'
+            id: newSlideId, title: `New Slide`, assignedTo: state.currentUser.id, status: 'not-started', isEditing: true, lockedBy: state.currentUser.id, elements: [], background: '#FFFFFF'
           }]
         },
         activeSlideId: newSlideId,

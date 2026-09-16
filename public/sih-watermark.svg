@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 550 620" width="550" height="620">
+  <!-- Hollow hexagon shape (top left behind main card) -->
+  <polygon points="50,110 95,135 95,185 50,210 5,185 5,135" fill="none" stroke="#E2E8F0" stroke-width="4" stroke-linejoin="round" opacity="0.8"/>
+
+  <!-- Small soft grey hexagon shape (bottom left) -->
+  <polygon points="120,400 155,420 155,460 120,480 85,460 85,420" fill="#E2E8F0" opacity="0.6"/>
+
+  <!-- Main Hexagon Background Card -->
+  <path d="M 180 30 L 490 30 C 520 30, 540 50, 540 80 L 540 540 C 540 570, 520 590, 490 590 L 180 590 C 150 590, 130 570, 120 540 L 70 340 L 120 80 C 130 50, 150 30, 180 30 Z" fill="#EEF2F6" />
+
+  <!-- White accent polygon cutout within card -->
+  <polygon points="200,40 260,75 260,145 200,180 140,145 140,75" fill="none" stroke="#FFFFFF" stroke-width="5" stroke-linejoin="round" opacity="0.9"/>
+
+  <!-- Centered SIH Brain Lightbulb Emblem -->
+  <g transform="translate(190, 110)">
+    <!-- Ray Lines -->
+    <line x1="120" y1="20" x2="120" y2="0" stroke="#475569" stroke-width="7" stroke-linecap="round"/>
+    <line x1="40" y1="50" x2="22" y2="34" stroke="#475569" stroke-width="7" stroke-linecap="round"/>
+    <line x1="200" y1="50" x2="218" y2="34" stroke="#475569" stroke-width="7" stroke-linecap="round"/>
+    <line x1="10" y1="130" x2="-8" y2="130" stroke="#475569" stroke-width="7" stroke-linecap="round"/>
+    <line x1="230" y1="130" x2="248" y2="130" stroke="#475569" stroke-width="7" stroke-linecap="round"/>
+
+    <!-- Left Brain Lobe (Orange with Circuit Traces) -->
+    <path d="M 120 30 C 95 30 75 35 60 48 C 45 61 35 78 35 98 C 35 112 40 125 45 138 C 50 151 55 162 60 172 C 67 186 78 198 90 205 L 120 205 Z" fill="#F36F21" />
+    <!-- Circuit lines on left lobe -->
+    <path d="M 115 50 L 85 50 L 70 65 L 50 65" fill="none" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="50" cy="65" r="4.5" fill="#FFFFFF"/>
+    <path d="M 115 85 L 90 85 L 75 100 L 45 100" fill="none" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="45" cy="100" r="4.5" fill="#FFFFFF"/>
+    <path d="M 115 125 L 80 125 L 65 140 L 52 140" fill="none" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="52" cy="140" r="4.5" fill="#FFFFFF"/>
+    <path d="M 115 165 L 95 165 L 80 180 L 68 180" fill="none" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="68" cy="180" r="4.5" fill="#FFFFFF"/>
+
+    <!-- Center Line Divider -->
+    <line x1="120" y1="30" x2="120" y2="205" stroke="#FFFFFF" stroke-width="4"/>
+
+    <!-- Right Brain Lobe (Dark Green with Binary Overlay) -->
+    <path d="M 120 30 C 145 30 165 35 180 48 C 195 61 205 78 205 98 C 205 112 200 125 195 138 C 190 151 185 162 180 172 C 173 186 162 198 150 205 L 120 205 Z" fill="#0F8A4B" />
+
+    <!-- Binary Code Overlay -->
+    <g fill="#FFFFFF" font-family="'Consolas', 'Courier New', monospace" font-weight="bold" text-anchor="middle">
+      <text x="156" y="62" font-size="19" letter-spacing="1">1010</text>
+      <text x="158" y="90" font-size="19" letter-spacing="1">01010</text>
+      <text x="160" y="118" font-size="19" letter-spacing="1">101010</text>
+      <text x="158" y="146" font-size="19" letter-spacing="1">010101</text>
+      <text x="154" y="174" font-size="19" letter-spacing="1">10101</text>
+      <text x="145" y="196" font-size="17" letter-spacing="1">010</text>
+    </g>
+
+    <!-- Lightbulb Base -->
+    <rect x="90" y="213" width="60" height="9" rx="4.5" fill="#475569"/>
+    <rect x="96" y="226" width="48" height="8" rx="4" fill="#475569"/>
+    <rect x="104" y="238" width="32" height="7" rx="3.5" fill="#475569"/>
+    <path d="M112 248 C112 255 128 255 128 248 Z" fill="#475569"/>
+
+    <!-- SIH Text -->
+    <text x="120" y="298" font-family="system-ui, -apple-system, sans-serif" font-size="38" font-weight="900" fill="#2C3E50" text-anchor="middle" letter-spacing="4">SIH</text>
+  </g>
+</svg>

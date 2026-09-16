@@ -10,7 +10,7 @@ ${JSON.stringify(MINEINTEL_DESIGN_SYSTEM, null, 2)}
 
 MINEINTEL SIH COMPETITION DNA:
 - Identity: Technical, evidence-driven, mining/geology oriented, enterprise-grade.
-- Palette: Warm ivory/cream (#F1ECE3), Dark Charcoal text (#201B14), Restrained Maroon (#8B2626), Subtle neutral surfaces (#EAE4D9).
+- Palette: Clean White slide canvas (#FFFFFF), Dark Charcoal text (#201B14), SIH Blue Accent (#0284C7), Restrained Maroon (#8B2626), Subtle neutral surfaces (#F8FAFC).
 - Typography: Space Grotesk for bold headers. IBM Plex Mono for technical metrics/body. Use exceptionally large fonts for key metrics.
 - Layout (The Grid): Never use more than 3 continuous bullet points. For 4+ items, output spatial grids (2x2 or 3x3 layout of shape cards).
 - Architecture Principle: Visually separate Data Ingestion, Intelligence/AI, and Output layers using grouped shapes.
@@ -251,22 +251,27 @@ export const AIService = {
               elements: undefined
             });
           } else {
-            // Generates the official SIH 1st Slide (Title Slide / Basic Details)
+            // Generates the official SIH 1st Slide (Title Slide / Basic Details) matching Arize/Bit-Storm winning format
             resolve({
-              explanation: "Generated the official **SIH 1st Slide (Title Slide)** layout containing Problem Statement ID, Title, Theme, Category, Team ID, and Team Name formatted strictly in MineIntel design tokens.",
+              explanation: "Generated the official **SIH 1st Slide (Title Slide)** layout containing centered top badge, left-aligned metadata fields, and right-side official SIH graphic card.",
               elements: [
-                { id: `el-title-${Date.now()}`, type: 'TEXT', content: 'SMART INDIA HACKATHON 2026', x: 60, y: 35, width: 1160, height: 50, rotation: 0, zIndex: 1, fontSize: 34, fontFamily: 'Space Grotesk', fontWeight: 'bold', color: '#8B2626', textAlign: 'center' },
-                { id: `el-sub-${Date.now()}`, type: 'TEXT', content: 'PROBLEM STATEMENT & TEAM DETAILS', x: 60, y: 85, width: 1160, height: 30, rotation: 0, zIndex: 1, fontSize: 16, fontFamily: 'IBM Plex Mono', fontWeight: 'bold', color: '#71695F', textAlign: 'center' },
+                // Top Center Blue Badge Header
+                { id: `el-top-pill-bg-${Date.now()}`, type: 'SHAPE', shapeType: 'rounded-rect', fill: '#0072C6', stroke: '#0072C6', strokeWidth: 0, cornerRadius: 10, x: 360, y: 30, width: 560, height: 50, rotation: 0, zIndex: 1 },
+                { id: `el-top-pill-text-${Date.now()}`, type: 'TEXT', content: 'SMART INDIA HACKATHON 2026', x: 360, y: 40, width: 560, height: 40, rotation: 0, zIndex: 2, fontSize: 24, fontFamily: 'Space Grotesk', fontWeight: 'bold', color: '#FFFFFF', textAlign: 'center' },
                 
-                // Box 1: Problem Details
-                { id: `el-box1-${Date.now()}`, type: 'SHAPE', shapeType: 'rounded-rect', fill: '#F5EFE6', stroke: '#D8D0C3', strokeWidth: 2, cornerRadius: 8, x: 60, y: 135, width: 560, height: 530, rotation: 0, zIndex: 0 },
-                { id: `el-b1-head-${Date.now()}`, type: 'TEXT', content: 'PROBLEM DETAILS', x: 90, y: 160, width: 500, height: 35, rotation: 0, zIndex: 2, fontSize: 20, fontFamily: 'Space Grotesk', fontWeight: 'bold', color: '#8B2626', textAlign: 'left' },
-                { id: `el-b1-t1-${Date.now()}`, type: 'TEXT', content: '• Problem Statement ID:\n   SIH1645 / 25032\n\n• Title:\n   Smart Digital Platform for Productivity &\n   Safety Management in Mining Operations\n\n• Theme:\n   Smart Automation & Mining Intelligence\n\n• PS Category:\n   Software', x: 90, y: 205, width: 500, height: 430, rotation: 0, zIndex: 2, fontSize: 15, fontFamily: 'IBM Plex Mono', fontWeight: 'normal', color: '#201B14', textAlign: 'left' },
-
-                // Box 2: Team Details
-                { id: `el-box2-${Date.now()}`, type: 'SHAPE', shapeType: 'rounded-rect', fill: '#F5EFE6', stroke: '#D8D0C3', strokeWidth: 2, cornerRadius: 8, x: 660, y: 135, width: 560, height: 530, rotation: 0, zIndex: 0 },
-                { id: `el-b2-head-${Date.now()}`, type: 'TEXT', content: 'TEAM REGISTRATION', x: 690, y: 160, width: 500, height: 35, rotation: 0, zIndex: 2, fontSize: 20, fontFamily: 'Space Grotesk', fontWeight: 'bold', color: '#8B2626', textAlign: 'left' },
-                { id: `el-b2-t1-${Date.now()}`, type: 'TEXT', content: '• Team Name:\n   MineIntel (Arize)\n\n• Team ID:\n   76239\n\n• Lead Institution:\n   Mining & Engineering Institute\n\n• State / UT:\n   Jharkhand\n\n• Verification Status:\n   Approved & Active', x: 690, y: 205, width: 500, height: 430, rotation: 0, zIndex: 2, fontSize: 15, fontFamily: 'IBM Plex Mono', fontWeight: 'normal', color: '#201B14', textAlign: 'left' }
+                // Top Right Header SIH Logo
+                { id: `el-top-right-logo-${Date.now()}`, type: 'IMAGE', url: '/sih-logo.svg', x: 1010, y: 20, width: 230, height: 60, rotation: 0, zIndex: 2 },
+                
+                // Left Column Data Fields
+                { id: `el-f1-${Date.now()}`, type: 'TEXT', content: 'Problem Statement ID – SIH1645', x: 60, y: 130, width: 750, height: 45, rotation: 0, zIndex: 2, fontSize: 22, fontFamily: 'Space Grotesk', fontWeight: 'bold', color: '#201B14', textAlign: 'left' },
+                { id: `el-f2-${Date.now()}`, type: 'TEXT', content: 'Problem Statement Title - An app and web based software for Productivity and safety management of coal mines.', x: 60, y: 195, width: 750, height: 90, rotation: 0, zIndex: 2, fontSize: 21, fontFamily: 'Space Grotesk', fontWeight: 'bold', color: '#201B14', textAlign: 'left' },
+                { id: `el-f3-${Date.now()}`, type: 'TEXT', content: 'Theme - Smart Automation', x: 60, y: 310, width: 750, height: 45, rotation: 0, zIndex: 2, fontSize: 21, fontFamily: 'Space Grotesk', fontWeight: 'bold', color: '#201B14', textAlign: 'left' },
+                { id: `el-f4-${Date.now()}`, type: 'TEXT', content: 'PS Category- Software', x: 60, y: 375, width: 750, height: 45, rotation: 0, zIndex: 2, fontSize: 21, fontFamily: 'Space Grotesk', fontWeight: 'bold', color: '#201B14', textAlign: 'left' },
+                { id: `el-f5-${Date.now()}`, type: 'TEXT', content: 'Team ID- 289', x: 60, y: 440, width: 750, height: 45, rotation: 0, zIndex: 2, fontSize: 21, fontFamily: 'Space Grotesk', fontWeight: 'bold', color: '#201B14', textAlign: 'left' },
+                { id: `el-f6-${Date.now()}`, type: 'TEXT', content: 'Team Name(Registered on Portal) - Arize', x: 60, y: 505, width: 750, height: 45, rotation: 0, zIndex: 2, fontSize: 21, fontFamily: 'Space Grotesk', fontWeight: 'bold', color: '#201B14', textAlign: 'left' },
+                
+                // Right Side Graphic Illustration & Hexagon Watermark
+                { id: `el-rwatermark-${Date.now()}`, type: 'IMAGE', url: '/sih-watermark.svg', x: 700, y: 50, width: 550, height: 620, rotation: 0, zIndex: 0 }
               ]
             });
           }
@@ -274,11 +279,16 @@ export const AIService = {
           resolve({
             explanation: "Generated official SIH Title Slide layout.",
             elements: [
-              { id: `el-title-${Date.now()}`, type: 'TEXT', content: 'SMART INDIA HACKATHON 2026', x: 80, y: 60, width: 1120, height: 60, rotation: 0, zIndex: 1, fontSize: 36, fontFamily: 'Space Grotesk', fontWeight: 'bold', color: '#8B2626', textAlign: 'center' },
-              { id: `el-box1-${Date.now()}`, type: 'SHAPE', shapeType: 'rounded-rect', fill: '#F5EFE6', stroke: '#D8D0C3', strokeWidth: 2, cornerRadius: 8, x: 80, y: 180, width: 540, height: 460, rotation: 0, zIndex: 0 },
-              { id: `el-b1-t1-${Date.now()}`, type: 'TEXT', content: '• Problem Statement ID: SIH1645\n\n• Title: Smart Platform for Productivity & Safety Management in Mining Operations\n\n• Theme: Smart Automation', x: 110, y: 240, width: 480, height: 340, rotation: 0, zIndex: 2, fontSize: 18, fontFamily: 'IBM Plex Mono', fontWeight: 'normal', color: '#201B14', textAlign: 'left' },
-              { id: `el-box2-${Date.now()}`, type: 'SHAPE', shapeType: 'rounded-rect', fill: '#F5EFE6', stroke: '#D8D0C3', strokeWidth: 2, cornerRadius: 8, x: 660, y: 180, width: 540, height: 460, rotation: 0, zIndex: 0 },
-              { id: `el-b2-t1-${Date.now()}`, type: 'TEXT', content: '• Team Name: MineIntel (Arize)\n\n• Team ID: 76239\n\n• Category: Software', x: 690, y: 240, width: 480, height: 340, rotation: 0, zIndex: 2, fontSize: 18, fontFamily: 'IBM Plex Mono', fontWeight: 'normal', color: '#201B14', textAlign: 'left' }
+              { id: `el-top-pill-bg-${Date.now()}`, type: 'SHAPE', shapeType: 'rounded-rect', fill: '#0072C6', stroke: '#0072C6', strokeWidth: 0, cornerRadius: 10, x: 350, y: 30, width: 580, height: 54, rotation: 0, zIndex: 1 },
+              { id: `el-top-pill-text-${Date.now()}`, type: 'TEXT', content: 'SMART INDIA HACKATHON 2026', x: 350, y: 42, width: 580, height: 40, rotation: 0, zIndex: 2, fontSize: 24, fontFamily: 'Space Grotesk', fontWeight: 'bold', color: '#FFFFFF', textAlign: 'center' },
+              { id: `el-top-right-logo-${Date.now()}`, type: 'IMAGE', url: '/sih-logo.svg', x: 1010, y: 20, width: 230, height: 60, rotation: 0, zIndex: 3 },
+              { id: `el-f1-${Date.now()}`, type: 'TEXT', content: 'Problem Statement ID – SIH1645', x: 50, y: 135, width: 760, height: 45, rotation: 0, zIndex: 2, fontSize: 24, fontFamily: 'Space Grotesk', fontWeight: 'bold', color: '#1C1917', textAlign: 'left' },
+              { id: `el-f2-${Date.now()}`, type: 'TEXT', content: 'Problem Statement Title - An app and web based software for Productivity and safety management of coal mines.', x: 50, y: 205, width: 760, height: 95, rotation: 0, zIndex: 2, fontSize: 22, fontFamily: 'Space Grotesk', fontWeight: 'bold', color: '#1C1917', textAlign: 'left' },
+              { id: `el-f3-${Date.now()}`, type: 'TEXT', content: 'Theme - Smart Automation', x: 50, y: 330, width: 760, height: 45, rotation: 0, zIndex: 2, fontSize: 22, fontFamily: 'Space Grotesk', fontWeight: 'bold', color: '#1C1917', textAlign: 'left' },
+              { id: `el-f4-${Date.now()}`, type: 'TEXT', content: 'PS Category- Software', x: 50, y: 400, width: 760, height: 45, rotation: 0, zIndex: 2, fontSize: 22, fontFamily: 'Space Grotesk', fontWeight: 'bold', color: '#1C1917', textAlign: 'left' },
+              { id: `el-f5-${Date.now()}`, type: 'TEXT', content: 'Team ID- 289', x: 50, y: 470, width: 760, height: 45, rotation: 0, zIndex: 2, fontSize: 22, fontFamily: 'Space Grotesk', fontWeight: 'bold', color: '#1C1917', textAlign: 'left' },
+              { id: `el-f6-${Date.now()}`, type: 'TEXT', content: 'Team Name(Registered on Portal) - Arize', x: 50, y: 540, width: 760, height: 45, rotation: 0, zIndex: 2, fontSize: 22, fontFamily: 'Space Grotesk', fontWeight: 'bold', color: '#1C1917', textAlign: 'left' },
+              { id: `el-rwatermark-${Date.now()}`, type: 'IMAGE', url: '/sih-watermark.svg', x: 700, y: 50, width: 550, height: 620, rotation: 0, zIndex: 0 }
             ]
           });
         } else if (prompt.includes('Generate a slide for MineIntel')) {

@@ -232,7 +232,7 @@ export default function StudioSidebarRight() {
                   <div className="w-4 h-4 rounded-sm border border-border/50" style={{ backgroundColor: el.type === 'TEXT' ? (el as TextElement).color : (el as ShapeElement).fill }}></div>
                   <input 
                     type="text" 
-                    value={el.type === 'TEXT' ? (el as TextElement).color : (el as ShapeElement).fill}
+                    value={(el.type === 'TEXT' ? (el as TextElement).color : (el as ShapeElement).fill) || ''}
                     onChange={e => {
                       if (el.type === 'TEXT') handleUpdate({ color: e.target.value });
                       else if (el.type === 'SHAPE') handleUpdate({ fill: e.target.value });

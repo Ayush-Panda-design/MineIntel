@@ -85,6 +85,32 @@
   20% { opacity: 1; }
   80% { opacity: 1; }
   100% { transform: translateX(350%) skewX(-20deg); opacity: 0; }
+  .animate-float {
+    animation: float 4s ease-in-out infinite;
+  }
+  .animate-pulse-glow {
+    animation: pulseGlow 2s ease-in-out infinite;
+  }
+  .animate-particle-down {
+    animation: particleDown 1.8s linear infinite;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(139, 38, 38, 0.4); }
+  50% { box-shadow: 0 0 0 10px rgba(139, 38, 38, 0); }
+}
+
+@keyframes particleDown {
+  0% { top: 0%; opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
 }
 
 @keyframes dashFlow {

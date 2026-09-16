@@ -1,6 +1,6 @@
 export const MINEINTEL_DESIGN_SYSTEM = {
   colors: {
-    background: '#F1ECE3', // Warm ivory / cream
+    background: '#FFFFFF', // Clean White Presentation Slide
     text: '#201B14',       // Dark charcoal
     accent: '#8B2626',     // Restrained maroon (adjusted for prompt)
     surface: '#EAE4D9',    // Subtle warm neutrals

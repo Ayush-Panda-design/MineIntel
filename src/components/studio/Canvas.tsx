@@ -91,20 +91,21 @@ export default function Canvas() {
   };
 
   return (
-    <div className="flex-1 overflow-auto bg-surface relative flex items-center justify-center p-8 outline-none" tabIndex={0}>
-      <div 
-        className="bg-white shadow-2xl relative ring-1 ring-border/50 transition-transform origin-center" 
-        style={{ 
-          width: CANVAS_WIDTH * zoom, 
-          height: CANVAS_HEIGHT * zoom,
-          backgroundColor: activeSlide.background || '#FFFFFF'
-        }}
+    <div className="flex-1 overflow-auto bg-[#E1D8C9] relative flex p-8 outline-none" tabIndex={0}>
+      <div className="m-auto flex items-center justify-center shrink-0">
+        <div 
+          className="bg-white shadow-2xl relative ring-1 ring-border/50 overflow-hidden" 
+          style={{ 
+            width: CANVAS_WIDTH * zoom, 
+            height: CANVAS_HEIGHT * zoom,
+            backgroundColor: activeSlide.background || '#FFFFFF'
+          }}
         onMouseDown={() => setSelectedElementIds([])}
         onDragOver={(e) => e.preventDefault()}
         onDrop={handleDrop}
         ref={containerRef}
       >
-        <div style={{ transform: `scale(${zoom})`, transformOrigin: 'top left', width: CANVAS_WIDTH, height: CANVAS_HEIGHT, position: 'absolute', top: 0, left: 0 }}>
+        <div style={{ transform: `scale(${zoom})`, transformOrigin: 'top left', width: CANVAS_WIDTH, height: CANVAS_HEIGHT, position: 'absolute', top: 0, left: 0 }} className="overflow-hidden">
           {sortedElements.map(el => (
              <ElementRenderer 
                key={el.id} 
@@ -112,7 +113,6 @@ export default function Canvas() {
                slideId={activeSlide.id}
                isSelected={selectedElementIds.includes(el.id)}
                onSelect={(e) => {
-                 e.stopPropagation();
                  if (e.shiftKey) {
                    if (selectedElementIds.includes(el.id)) {
                      setSelectedElementIds(selectedElementIds.filter(id => id !== el.id));
@@ -129,7 +129,8 @@ export default function Canvas() {
         </div>
       </div>
     </div>
-  );
+  </div>
+);
 }
 
 function ElementRenderer({ 
@@ -146,11 +147,10 @@ function ElementRenderer({
   onUpdate: (updates: Partial<SlideElement>) => void
 }) {
 
-  const { saveHistory, zoom, setSelectedElementIds } = useStudioStore();
+  const { saveHistory, setSelectedElementIds } = useStudioStore();
 
   return (
     <Rnd
-      scale={zoom}
       size={{ width: element.width, height: element.height }}
       position={{ x: element.x, y: element.y }}
       onDragStart={(e) => {
@@ -203,6 +203,10 @@ function TextRenderer({ element, onUpdate, isSelected }: { element: TextElement,
   const { saveHistory } = useStudioStore();
 
   useEffect(() => {
+    setContent(element.content);
+  }, [element.content]);
+
+  useEffect(() => {
     if (!isSelected) setIsEditing(false);
   }, [isSelected]);
 
@@ -234,16 +238,17 @@ function TextRenderer({ element, onUpdate, isSelected }: { element: TextElement,
         onChange={(e) => setContent(e.target.value)}
         onBlur={handleBlur}
         onKeyDown={(e) => {
+          e.nativeEvent.stopImmediatePropagation();
+          e.stopPropagation();
           if (e.key === 'Escape') {
             e.preventDefault();
             e.currentTarget.blur();
           }
-          e.stopPropagation(); // prevent global shortcuts
         }}
         style={{
           ...textStyles,
           background: 'transparent',
-          border: '1px solid #B5652F',
+          border: '1px solid #0072C6',
           outline: 'none',
           resize: 'none',
           padding: 0,
@@ -256,8 +261,10 @@ function TextRenderer({ element, onUpdate, isSelected }: { element: TextElement,
 
   return (
     <div 
+      onClick={(e) => {
+        setIsEditing(true);
+      }}
       onDoubleClick={(e) => {
-        e.stopPropagation();
         setIsEditing(true);
       }}
       style={{
